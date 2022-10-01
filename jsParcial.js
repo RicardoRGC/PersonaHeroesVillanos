@@ -107,7 +107,7 @@ class Persona {
 
     set Id(value) {
         if (value == null || value < 1) {
-                   }
+        }
         this._id = value;
     }
 
@@ -117,7 +117,7 @@ class Persona {
 
     set Nombre(value) {
         if (value == null || value.length < 2) {
-           
+
         }
         this._nombre = value;
     }
@@ -477,21 +477,21 @@ function agregarPersona() {
     while (existeId(id)) {
         id = getRandomInt(100);
     }
-    
+
     let apellido = document.getElementById("fApellido").value;
     let nombre = document.getElementById("fNombre").value;
     let edad = parseInt(document.getElementById("fEdad").value);
 
-     {
-        if (id > 0 && nombre != "" && apellido != "" && edad != "" && nombre != null&& apellido != null && edad != null  ) {
+    {
+        if (id > 0 && nombre != "" && apellido != "" && edad != "" && nombre != null && apellido != null && edad != null) {
             let altaPersona;
             if (document.getElementById("selectTipo").value == "Heroe") {
                 let enemigo = document.getElementById("input1").value;
                 let robos = document.getElementById("input2").value;
                 let Asesinatos = document.getElementById("input3").value;
-                if (Asesinatos > 1940 && enemigo != "" && robos != ""&&Asesinatos !=null && enemigo != null && robos !=null) {
-                    
-                    
+                if (Asesinatos > 1940 && enemigo != "" && robos != "" && Asesinatos != null && enemigo != null && robos != null) {
+
+
                     altaPersona = new Heroe(
                         id,
                         nombre,
@@ -503,17 +503,16 @@ function agregarPersona() {
                     );
                     arrayPersonas
                         .push(altaPersona);
-                        insertarNuevo();
-                        visibilidad();
-                        limpiarCampos();
+                    insertarNuevo();
+                    visibilidad();
+                    limpiarCampos();
                 }
             } else {
 
                 let alterEgo = document.getElementById("input1").value;
                 let ciudad = document.getElementById("input2").value;
                 let publicado = parseInt(document.getElementById("input3").value);
-                if (publicado > 0 && alterEgo != "" && ciudad != ""&&publicado !=null && alterEgo != null && ciudad !=null) 
-                {
+                if (publicado > 0 && alterEgo != "" && ciudad != "" && publicado != null && alterEgo != null && ciudad != null) {
                     if (publicado > 0 && alterEgo != "" && ciudad != "") {
                         altaPersona = new Villano(
                             id,
@@ -526,14 +525,14 @@ function agregarPersona() {
                         );
                         arrayPersonas
                             .push(altaPersona);
-                            insertarNuevo();
-                            visibilidad();
-                            limpiarCampos();
-                    }else{
+                        insertarNuevo();
+                        visibilidad();
+                        limpiarCampos();
+                    } else {
                         alert("Completar el formulario con datos correctos villano");
 
                     }
-                    
+
 
                 }
 
@@ -542,7 +541,7 @@ function agregarPersona() {
         } else {
             alert("Completar el formulario con datos correctos");
         }
-        
+
     }
 }
 // // -----------------------------------------
@@ -582,30 +581,47 @@ function modificarPersona() {
 
     let personaa = arrayPersonas
         .find(per => per.Id == id);
+    let apellido = document.getElementById("fApellido").value;
     let nombre = document.getElementById("fNombre").value;
-    personaa.Nombre = nombre;
-    personaa.Apellido = document.getElementById("fApellido").value;
-    personaa.Edad = document.getElementById("fEdad").value;
+    let edad = parseInt(document.getElementById("fEdad").value);
+    let inpu1 = document.getElementById("input1").value;
+    let inpu2 = document.getElementById("input2").value;
+    let inpu3 = document.getElementById("input3").value;
+
+    if (id > 0 && nombre != "" && apellido != "" && edad != "" && nombre != null
+        && apellido != null && edad != null
+        && inpu1 != "" && inpu2 != ""
+        && inpu1 != null && inpu2 != null && inpu3 != ""
+        && inpu3 != null ) {
+
+        personaa.Nombre = nombre;
+        personaa.Apellido = apellido;
+        personaa.Edad = edad;
 
 
-    if (document.getElementById("selectTipo").value == "Heroe") {
-        personaa.AlterEgo = document.getElementById("input1").value;
-        personaa.Ciudad = document.getElementById("input2").value;
-        personaa.Publicado = document.getElementById("input3").value;
+           
+        if (document.getElementById("selectTipo").value == "Heroe") {
+            personaa.AlterEgo = document.getElementById("input1").value;
+            personaa.Ciudad = document.getElementById("input2").value;
+            personaa.Publicado = document.getElementById("input3").value;
+        }
+        else {
+            personaa.Enemigos = document.getElementById("input1").value;
+            personaa.Robos = document.getElementById("input2").value;
+            personaa.Asesinatos = document.getElementById("input3").value;
+
+        }
+        console.log(personaa);
+
+
+        visibilidad();
+        limpiarCampos();
+        limpiarTabla();
+        generarTabla();
     }
     else {
-        personaa.Enemigos = document.getElementById("input1").value;
-        personaa.Robos = document.getElementById("input2").value;
-        personaa.Asesinatos = document.getElementById("input3").value;
-
+        alert("Completar el formulario con datos correctos");
     }
-    console.log(personaa);
-
-
-    visibilidad();
-    limpiarCampos();
-    limpiarTabla();
-    generarTabla();
 
 }
 
