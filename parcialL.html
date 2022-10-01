@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="parcialStyle.css" />
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <!-- CSS only -->
+
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="FormularioCompleto" id="formDatos">
+        <form action="" id="idFormulario" class="formulario">
+            <div id="Enemigos">
+                <label for=""> Form Datos</label>
+            </div>
+
+            <div class="labell">
+                <label for="filtrar">Filtrar por</label>
+
+                <select id="select">
+                    <option value="todos" selected>Todos</option>
+                    <option value="Heroe">Heroe</option>
+                    <option value="Villano">Villano</option>
+                </select>
+            </div>
+            <div class="labell">
+                <label for="calcular">Calcular Edad Promedio</label>
+                <input id="calcular" type="text" name="calcular" value="promedio" />
+
+                <button type="submit" name="calcular" id="promedio">Promedio</button>
+            </div>
+            <div class="labell">
+                <label for="">Mostrar Columnas:</label>
+            </div>
+            <div class="labell" id="mostrar">
+                <div class="form-check">
+                    <input class="form-check-input"type="checkbox" id="chid" /><label  class="form-check-label"  for="defaultCheck1">ID</label>
+                </div>
+                <input class="form-check-input"type="checkbox" id="chNombre" /><label class="form-check-label"  for="defaultCheck1">Nombre</label>
+                <input class="form-check-input"type="checkbox" id="chApellido" /><label class="form-check-label"  for="defaultCheck1">Apellido</label>
+                <input class="form-check-input"type="checkbox" id="chEdad" /><label class="form-check-label"  for="defaultCheck1">Edad</label>
+                <input class="form-check-input"type="checkbox" id="chAlterEgo" /><label>AlterEgo</label>
+                <input class="form-check-input"type="checkbox" id="chCiudad" /><label>Ciudad</label>
+                <input class="form-check-input"type="checkbox" id="chPublicado" /><label>Publicado</label>
+                <input class="form-check-input"type="checkbox" id="chEnemigos" /><label>Enemigos</label>
+                <input class="form-check-input"type="checkbox" id="chRobos" /><label>Robos</label>
+                <input class="form-check-input"type="checkbox" id="chAsesinatos" /><label>Asesinatos</label>
+            </div>
+        </form>
+
+        <section id="contenedorTabla">
+            <table class="table table-dark table-hover">
+                <thead>
+                    <tr>
+                        <th id="thId">
+                            <input class="button" name="button" type="button" id="inputId" value="Id" />
+                        </th>
+                        <th id="thNombre">
+                            <input class="button" name="button" type="button" id="inpNombre" value="Nombre" />
+                        </th>
+                        <th id="thApellido">
+                            <input class="button" name="button" type="button" id="inpApellido" value="Apellido" />
+                        </th>
+                        <th id="thEdad">
+                            <input class="button" name="button" type="button" id="inpEdad" value="Edad" />
+                        </th>
+
+                        <th id="thAlterEgo">
+                            <input class="button" name="button" type="button" id="inpAlterEgo" value="AlterEgo" />
+                        </th>
+                        <th id="thCiudad">
+                            <input class="button" name="button" type="button" id="inpCiudad" value="Ciudad" />
+                        </th>
+                        <th id="thPublicado">
+                            <input class="button" name="button" type="button" id="inpPublicado" value="Publicado" />
+                        </th>
+                        <th id="thEnemigos">
+                            <input class="button" name="button" type="button" id="inpEnemigos" value="Enemigos" />
+                        </th>
+                        <th id="thRobos">
+                            <input class="button" name="button" type="button" id="inpRobos" value="Robos" />
+                        </th>
+                        <th id="thAsesinatos">
+                            <input class="button" name="button" type="button" id="inpAsesinatos" value="Asesinatos" />
+                        </th>
+
+                    </tr>
+                </thead>
+
+
+                <tbody id="cuerpoTabla">
+
+
+                </tbody>
+            </table>
+        </section>
+    </div>
+    <div id="botonAgregar">
+        <button id="agregar">Agregar</button>
+
+    </div>
+
+    <form action="" id="FormIngreso">
+        <div class="">
+            <input id="fID"  class="form-control form-control-sm" type="text" placeholder="ID" aria-label=".form-control-sm example"
+                readonly />
+        </div>
+        <div class="inputFormIngreso">
+            <input  class="form-control form-control-sm"id="fNombre" class="inputFormIngreso" type="text" placeholder="Nombre"
+                aria-label=".form-control-sm example" />
+        </div>
+        <div class="inputFormIngreso">
+            <input  class="form-control form-control-sm"id="fApellido" class="inputFormIngreso" type="text" placeholder="Apellido"
+                aria-label=".form-control-sm example" />
+        </div>
+        <div class="inputFormIngreso">
+            <input  class="form-control form-control-sm"id="fEdad" class="inputFormIngreso" type="text" placeholder="Edad"
+                aria-label=".form-control-sm example" />
+        </div>
+        <div class="">
+            <select id="selectTipo" class="form-select" aria-label="Default select example">
+                <option selected>Tipo</option>
+                <option value="Heroe">Heroe</option>
+                <option value="Villano">Villano</option>
+            </select>
+        </div>
+        <div class="inputFormIngreso">
+            <input  class="form-control form-control-sm"id="input1" name="input1" class="inputFormIngreso" type="text" placeholder="AlterEgo"
+                aria-label=".form-control-sm example" />
+        </div>
+
+        <div class="inputFormIngreso">
+            <input class="form-control form-control-sm" name="input2" id="input2" class="inputFormIngreso" type="text" placeholder="Ciudad"
+                aria-label=".form-control-sm example" />
+        </div>
+
+        <div class="inputFormIngreso">
+            <input class="form-control form-control-sm" name="input3" id="input3" class="inputFormIngreso" type="text" placeholder="Publicado"
+                aria-label=".form-control-sm example" />
+        </div>
+
+        <div id="botones">
+            <input type="button" name="" id="alta" value="Alta">
+            <input type="button" name="" id="modificar" value="Modificar">
+            <input type="button" name="" id="eliminar" value="Eliminar">
+            <input type="button" name="" id="cancelar" value="Cancelar">
+
+        </div>
+    </form>
+</body>
+
+<script src="jsParcial.js"></script>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+    crossorigin="anonymous"></script>
+
+</html>
