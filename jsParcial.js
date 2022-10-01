@@ -489,7 +489,7 @@ function agregarPersona() {
                 let enemigo = document.getElementById("input1").value;
                 let robos = document.getElementById("input2").value;
                 let Asesinatos = document.getElementById("input3").value;
-                if (Asesinatos > 0 && enemigo != "" && robos != ""&&Asesinatos !=null && enemigo != null && robos !=null) {
+                if (Asesinatos > 1940 && enemigo != "" && robos != ""&&Asesinatos !=null && enemigo != null && robos !=null) {
                     
                     
                     altaPersona = new Heroe(
@@ -503,33 +503,46 @@ function agregarPersona() {
                     );
                     arrayPersonas
                         .push(altaPersona);
+                        insertarNuevo();
+                        visibilidad();
+                        limpiarCampos();
                 }
             } else {
+
                 let alterEgo = document.getElementById("input1").value;
                 let ciudad = document.getElementById("input2").value;
                 let publicado = parseInt(document.getElementById("input3").value);
+                if (publicado > 0 && alterEgo != "" && ciudad != ""&&publicado !=null && alterEgo != null && ciudad !=null) 
+                {
+                    if (publicado > 0 && alterEgo != "" && ciudad != "") {
+                        altaPersona = new Villano(
+                            id,
+                            nombre,
+                            apellido,
+                            edad,
+                            alterEgo,
+                            ciudad,
+                            publicado
+                        );
+                        arrayPersonas
+                            .push(altaPersona);
+                            insertarNuevo();
+                            visibilidad();
+                            limpiarCampos();
+                    }else{
+                        alert("Completar el formulario con datos correctos villano");
 
-                if (publicado > 0 && alterEgo != "" && ciudad != "") {
-                    altaPersona = new Villano(
-                        id,
-                        nombre,
-                        apellido,
-                        edad,
-                        alterEgo,
-                        ciudad,
-                        publicado
-                    );
-                    arrayPersonas
-                        .push(altaPersona);
+                    }
+                    
+
                 }
+
             }
-            insertarNuevo();
-            console.log(altaPersona.toString());
-            limpiarCampos();
+
         } else {
             alert("Completar el formulario con datos correctos");
         }
-        visibilidad();
+        
     }
 }
 // // -----------------------------------------
@@ -551,7 +564,7 @@ function EliminarPersona() {
     console.log(arrayPersonas
     );
 
-    // document.getElementById("form").style.display = "none";
+    visibilidad();
     limpiarCampos();
     limpiarTabla();
     generarTabla();
