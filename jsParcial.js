@@ -20,8 +20,8 @@ const EnemigosSelec = document.getElementById("chEnemigos");
 EnemigosSelec.checked = true;
 const facultadSelec = document.getElementById("chRobos");
 facultadSelec.checked = true;
-const anioGradSelec = document.getElementById("chAsesinatos");
-anioGradSelec.checked = true;
+const publicadoSelec = document.getElementById("chAsesinatos");
+publicadoSelec.checked = true;
 
 ///aculta el formulario de ingreso.
 document.getElementById("FormIngreso").style.display = "none";
@@ -77,8 +77,8 @@ facultadSelec.addEventListener("click", function (e) {
     $("td:nth-child(9)").toggle();
     $("#thRobos").toggle();
 });
-anioGradSelec.addEventListener("click", function (e) {
-    // $(".anioGrad").toggle();
+publicadoSelec.addEventListener("click", function (e) {
+    // $(".publicado").toggle();
     $("td:nth-child(10)").toggle();
     $("#thAsesinatos").toggle();
 
@@ -107,8 +107,7 @@ class Persona {
 
     set Id(value) {
         if (value == null || value < 1) {
-            throw new Error("Error Id");
-        }
+                   }
         this._id = value;
     }
 
@@ -118,7 +117,7 @@ class Persona {
 
     set Nombre(value) {
         if (value == null || value.length < 2) {
-            throw new Error("Error Id");
+           
         }
         this._nombre = value;
     }
@@ -377,7 +376,7 @@ function selectForm() {
     } else {
         document.getElementsByName("input1")[0].placeholder = "alterEgo";
         document.getElementsByName("input2")[0].placeholder = "ciudad";
-        document.getElementsByName("input3")[0].placeholder = "Año de Graduacion";
+        document.getElementsByName("input3")[0].placeholder = "Publicado";
     }
 }
 
@@ -478,18 +477,21 @@ function agregarPersona() {
     while (existeId(id)) {
         id = getRandomInt(100);
     }
+    
     let apellido = document.getElementById("fApellido").value;
     let nombre = document.getElementById("fNombre").value;
     let edad = parseInt(document.getElementById("fEdad").value);
 
-    if (!existeId(document.getElementById("fID").value)) {
-        if (id > 0 && nombre != "" && apellido != "" && edad != "") {
+     {
+        if (id > 0 && nombre != "" && apellido != "" && edad != "" && nombre != null&& apellido != null && edad != null  ) {
             let altaPersona;
             if (document.getElementById("selectTipo").value == "Heroe") {
                 let enemigo = document.getElementById("input1").value;
                 let robos = document.getElementById("input2").value;
                 let Asesinatos = document.getElementById("input3").value;
-                if (Asesinatos > 0 && enemigo != "" && robos != "") {
+                if (Asesinatos > 0 && enemigo != "" && robos != ""&&Asesinatos !=null && enemigo != null && robos !=null) {
+                    
+                    
                     altaPersona = new Heroe(
                         id,
                         nombre,
@@ -505,9 +507,9 @@ function agregarPersona() {
             } else {
                 let alterEgo = document.getElementById("input1").value;
                 let ciudad = document.getElementById("input2").value;
-                let anioGrad = parseInt(document.getElementById("input3").value);
+                let publicado = parseInt(document.getElementById("input3").value);
 
-                if (anioGrad > 0 && alterEgo != "" && ciudad != "") {
+                if (publicado > 0 && alterEgo != "" && ciudad != "") {
                     altaPersona = new Villano(
                         id,
                         nombre,
@@ -515,7 +517,7 @@ function agregarPersona() {
                         edad,
                         alterEgo,
                         ciudad,
-                        anioGrad
+                        publicado
                     );
                     arrayPersonas
                         .push(altaPersona);
@@ -527,9 +529,7 @@ function agregarPersona() {
         } else {
             alert("Completar el formulario con datos correctos");
         }
-        document.getElementById("FormIngreso").style.display = "none";
-    } else {
-        alert("Registro ya existe");
+        visibilidad();
     }
 }
 // // -----------------------------------------
@@ -574,23 +574,26 @@ function modificarPersona() {
     personaa.Apellido = document.getElementById("fApellido").value;
     personaa.Edad = document.getElementById("fEdad").value;
 
+
     if (document.getElementById("selectTipo").value == "Heroe") {
         personaa.AlterEgo = document.getElementById("input1").value;
-        personaa.ciudad = document.getElementById("input2").value;
+        personaa.Ciudad = document.getElementById("input2").value;
         personaa.Publicado = document.getElementById("input3").value;
     }
     else {
         personaa.Enemigos = document.getElementById("input1").value;
-        personaa.robos = document.getElementById("input2").value;
+        personaa.Robos = document.getElementById("input2").value;
         personaa.Asesinatos = document.getElementById("input3").value;
 
     }
     console.log(personaa);
 
 
+    visibilidad();
     limpiarCampos();
     limpiarTabla();
     generarTabla();
+
 }
 
 ///------------------------------
